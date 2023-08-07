@@ -21,5 +21,14 @@ public class SQL {
 	public static final String SELECT_COUNT_EMAIL = "SELECT COUNT(*) FROM `User` WHERE `email`=?";
 	public static final String SELECT_COUNT_HP = "SELECT COUNT(*) FROM `User` WHERE `hp`=?";
 	
+	//article
+	public static final String INSERT_ARTICLE = "INSERT INTO `Article` SET"
+											+ "`title`=?, "
+												+ "`content`=?, "
+												+ "`writer`=?, "
+												+ "`regip`=?, "
+												+ "`rdate`=NOW() ";
+	
+	public static final String SELECT_ARTICLES = "SELECT * FROM `Article`";
 
 }

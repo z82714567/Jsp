@@ -225,6 +225,7 @@ main {
 }
 /* list 메인 */
 .list {
+	position: relative;
     width: 720px;
     margin: 60px auto;
 }
@@ -272,30 +273,32 @@ main {
     width: 50px;
     text-align: center;
 }
-.list > div {
-    position: relative;
+.list > .paging {
     padding: 20px;
-    text-align: center;
+    text-align: center;            
 }
-.list > div > a {
+.list > .paging > a {
     padding: 8px;
     background: #f2f2f2;
-    border: 1px solid #d7d7d7;
+    border: 1px solid #d7d7d7;            
 }
-.list > div > a:nth-child(2) {
+
+.list > .paging > .current {
     border: 1px solid #6d6d6d;
     background: #888;
     color: #fff;
 }
-.list > div > a:nth-child(6) {
+.list > .btnWrite {
+	display: inline-block;
+	padding: 7px;
+	border: 1px solid #3b3c3f;
+	background: #4b545e;
+	color: #fff;
     position: absolute;
     bottom: 14px;
     right: 0;
-    padding: 7px;
-    border: 1px solid #3b3c3f;
-    background: #4b545e;
-    color: #fff;
 }
+
 /* write /modify 메인 */
 .write {
     width: 720px;

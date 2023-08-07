@@ -1,35 +1,17 @@
+<%@page import="kr.co.jboard1.vo.ArticleVO"%>
+<%@page import="java.util.List"%>
+<%@page import="kr.co.jboard1.dao.ArticleDAO"%>
 <%@page import="kr.co.jboard1.vo.UserVO"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="./_header.jsp" %>
 <%
-	//현재 로그인한 사용자 가져오기
-	UserVO sessUser = (UserVO) session.getAttribute("sessUser");
-
-	//
-	if(sessUser == null){
-		response.sendRedirect("/Jboard1/user/login.jsp?success=101");
-		return;
-	}
+	ArticleDAO dao = new ArticleDAO();
+	List<ArticleVO> articles = dao.selectArticles();
 	
+
 %>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>글목록</title>
-    <link rel="stylesheet" href="./css/style.css">
-</head>
-<body>
-    <div id="container">
-        <header>
-            <h3>Board System v1.0</h3>
-            <p>
-                <%= sessUser.getNick() %>님 반갑습니다.
-                <a href="/Jboard1/user/logout.jsp" class="logout">[로그아웃]</a>
-            </p>
-        </header>
-        <main>
-            <section class="list">
+		  <main>
+		      <section class="list">
                 <h3>글목록</h3>
                 <article>
                     <table border="0" class="tab">
@@ -40,31 +22,30 @@
                             <th>날짜</th>
                             <th>조회</th>
                         </tr>
+                        <% for(ArticleVO article : articles) { %>
                         <tr>
-                            <td>1</td>
+                            <td><%= article.getNo() %></td>
                             <td>
-                                <a href="#">테스트 제목입니다.</a>&nbsp;[3]
+                                <a href="#"><%= article.getTitle() %></a>&nbsp;[<%= article.getComment() %>]
                             </td>
-                            <td>길동이</td>
-                            <td>20-05-12</td>
-                            <td>12</td>
+                            <td><%= article.getWriter() %></td>
+                            <td><%= article.getRdate() %></td>
+                            <td><%= article.getHit() %></td>
                         </tr>
+                        <% } %>
                     </table>
                 </article>
+                <!-- 페이지 네비게이션 -->
                 <div class="paging">
                     <a href="#" class="prev">이전</a>
-                    <a href="#" class="num current">1</a>
-                    <a href="#" class="num">2</a>
-                    <a href="#" class="num">3</a>
+                    <a href="#" class="num current">1</a>                
+                    <a href="#" class="num">2</a>                
+                    <a href="#" class="num">3</a>                
                     <a href="#" class="next">다음</a>
                 </div>
-                    <a href="#" class="btnWrite">글쓰기</a>
-                
+
+                <!-- 글쓰기 버튼 -->
+                <a href="/Jboard1/write.jsp" class="btnWrite">글쓰기</a>
             </section>
         </main>
-        <footer>
-            <p>ⓒCopyright 노수현.com</p>
-        </footer>
-    </div>
-</body>
-</html>
+<%@ include file="./_footer.jsp"%>
