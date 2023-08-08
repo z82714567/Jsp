@@ -1,6 +1,6 @@
-package kr.co.jboard1.vo;
+package kr.co.jboard1.dto;
 
-public class ArticleVO {
+public class ArticleDTO {
 
 	private int no;
 	private int parent;
@@ -14,11 +14,22 @@ public class ArticleVO {
 	private String regip;
 	private String rdate;
 	
+	//추가 필드(writer -> nick)
+	private String nick;
+	
+	//추가 get set
+	public String getNick() {
+		return nick;
+	}
+	public void setNick(String nick) {
+		this.nick = nick;
+	}
 	
 	
 	public int getNo() {
 		return no;
 	}
+	
 	public void setNo(int no) {
 		this.no = no;
 	}

@@ -1,17 +1,16 @@
-<%@page import="kr.co.jboard1.vo.UserVO"%>
+<%@page import="kr.co.jboard1.dto.UserDTO"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-	request.setCharacterEncoding("UTF-8");
+request.setCharacterEncoding("UTF-8");
 	String success = request.getParameter("success");
 
 	//(로그인 된 경우)현재 사용자 로그인 여부 확인해서 리스트로 이동
-	UserVO sessUser = (UserVO) session.getAttribute("sessUser");
+	UserDTO sessUser = (UserDTO) session.getAttribute("sessUser");
 	
 	if(sessUser != null) {
 		response.sendRedirect("/Jboard1/list.jsp");
 		return;
 	}
-	
 %>
 
 

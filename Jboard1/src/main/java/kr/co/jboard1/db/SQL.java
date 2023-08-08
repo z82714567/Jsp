@@ -29,6 +29,13 @@ public class SQL {
 												+ "`regip`=?, "
 												+ "`rdate`=NOW() ";
 	
-	public static final String SELECT_ARTICLES = "SELECT * FROM `Article`";
+	public static final String SELECT_ARTICLES = "SELECT " //"SELECT * FROM `Article`"
+												+ "a.*, "
+												+ "b.`nick` "
+												+ "FROM `Article` AS a "
+												+ "JOIN `User` AS b ON a.writer = b.uid " //writer -> nick
+												+ "ORDER BY `no` DESC " //최신글 순서대로 
+												+ "LIMIT ?, 10"; //1페이지당(시작페이지INDEX번호) 10개 게시물 
 
+	public static final String SELECT_COUNT_TOTAL = "SELECT COUNT(*) FROM `Article`";
 }

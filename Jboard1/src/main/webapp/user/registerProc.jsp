@@ -1,7 +1,7 @@
-<%@page import="kr.co.jboard1.vo.UserVO"%>
+<%@page import="kr.co.jboard1.dto.UserDTO"%>
 <%@page import="kr.co.jboard1.dao.UserDAO"%>
 <%@page import="java.sql.PreparedStatement"%>
-<%@page import="kr.co.jboard1.vo.TermsVO"%>
+<%@page import="kr.co.jboard1.dto.TermsDTO"%>
 <%@page import="java.sql.ResultSet"%>
 <%@page import="java.sql.Statement"%>
 <%@page import="java.sql.Connection"%>
@@ -10,8 +10,7 @@
 <%@page import="javax.naming.Context"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%
-
-	//인코딩 설정
+//인코딩 설정
 	request.setCharacterEncoding("UTF-8");
 
 	//전송데이터 수신
@@ -28,7 +27,7 @@
 	String regip = request.getRemoteAddr(); //사용자IP주소
 	
 	//
-	UserVO vo = new UserVO();
+	UserDTO vo = new UserDTO();
 	vo.setUid(uid);
 	vo.setPass(pass1);
 	vo.setName(name);

@@ -1,4 +1,4 @@
-<%@page import="kr.co.jboard1.vo.ArticleVO"%>
+<%@page import="kr.co.jboard1.dto.ArticleDTO"%>
 <%@page import="kr.co.jboard1.dao.ArticleDAO"%>
 <%@page import="kr.co.jboard1.db.SQL"%>
 <%@page import="java.sql.PreparedStatement"%>
@@ -10,7 +10,7 @@
     pageEncoding="EUC-KR"%>
 
 <%
-	//전송 데이터 수신
+//전송 데이터 수신
 	request.setCharacterEncoding("UTF-8");
 	String title = request.getParameter("title");
 	String content = request.getParameter("content");
@@ -18,7 +18,7 @@
 	String writer = request.getParameter("writer");	
 	String regip = request.getRemoteAddr(); //ip주소를 얻기 위해 사용하는 코드
 	
-	ArticleVO vo = new ArticleVO();
+	ArticleDTO vo = new ArticleDTO();
 	vo.setTitle(title);
 	vo.setContent(content);
 	vo.setWriter(writer);
