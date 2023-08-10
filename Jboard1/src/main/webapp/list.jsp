@@ -5,7 +5,7 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./_header.jsp" %>
 <%
-request.setCharacterEncoding("UTF-8");
+	request.setCharacterEncoding("UTF-8");
 	String pg = request.getParameter("pg");
 	
 	//DAO객체 생성
@@ -69,9 +69,9 @@ request.setCharacterEncoding("UTF-8");
                         for(ArticleDTO article : articles) {
                         %>
                         <tr>
-                            <td><%= pageStartNum-- %></td>
+                            <td><%= pageStartNum-- %></td> <%-- 차례대로, 마이너스 --%>
                             <td>
-                                <a href="#"><%= article.getTitle() %></a>&nbsp;[<%= article.getComment() %>]
+                                <a href="/Jboard1/view.jsp?no=<%= article.getNo()%>"><%= article.getTitle() %></a>&nbsp;[<%= article.getComment() %>]
                             </td>
                             <td><%= article.getNick() %></td>
                             <td><%= article.getRdate() %></td>

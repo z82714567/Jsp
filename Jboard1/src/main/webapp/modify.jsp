@@ -1,34 +1,30 @@
+<%@page import="kr.co.jboard1.dto.ArticleDTO"%>
+<%@page import="kr.co.jboard1.dao.ArticleDAO"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>글수정</title>
-    <link rel="stylesheet" href="./css/style.css">
-</head>
-<body>
-    <div id="container">
-        <header>
-            <h3>Board System v1.0</h3>
-            <p>
-                ooo님 반갑습니다.
-                <a href="#" class="logout">[로그아웃]</a>
-            </p>
-        </header>
+<%@ include file="./_header.jsp" %>
+<%
+	request.setCharacterEncoding("UTF-8");
+	String no = request.getParameter("no");
+	
+	ArticleDAO dao = new ArticleDAO();
+	ArticleDTO dto = dao.selectArticle(no);
+
+
+%>
         <main>
             <section class="write">
                 <h3>글수정</h3>
                 <article>
-                   <form action="#">
+                   <form action="/Jboard1/proc/updateProc.jsp" method="post">
+                   <input type="hidden" name="no" value="<%= no %>"/>
                         <table class="tbt">
                             <tr>
                                 <td>제목</td>
-                                <td><input type="text" name="title" placeholder="제목을 입력하세요."></td>
+                                <td><input type="text" name="title" value="<%= dto.getTitle() %>" placeholder="제목을 입력하세요."></td>
                             </tr>
                             <tr>
                                 <td>내용</td>
-                                <td><textarea name="content"></textarea></td>
+                                <td><textarea name="content"><%= dto.getContent() %></textarea></td>
                             </tr>
                             <tr>
                                 <td>첨부</td>
@@ -36,16 +32,11 @@
                             </tr>
                         </table>
                         <div class="ddi">
-                            <a href="#" class="btnCancel">취소</a>
+                            <a href="/Jboard1/view.jsp?no=<%= no %>" class="btnCancel">취소</a>
                             <input type="submit" class="btnWrite" value="수정완료">
                         </div>
                    </form> 
                 </article>
             </section>
         </main>
-        <footer>
-            <p>ⓒCopyright 노수현.com</p>
-        </footer>
-    </div>
-</body>
-</html>
+ <%@ include file="./_footer.jsp" %>
