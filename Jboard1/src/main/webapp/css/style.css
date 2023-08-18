@@ -404,7 +404,7 @@ main {
     background: #f9f9f9;
     margin-bottom: 16px;
 }
-.commentList > h3 {
+.commentList h3 {
     font-weight: bold;
 }
 
@@ -430,7 +430,7 @@ main {
 	background: white;
 }
 
-.comment > div {
+.comment div {
     text-align: right;
 }
 
@@ -438,11 +438,11 @@ main {
 	display: none;
 }
 
-.comment > div > a {
+.comment div > a {
     text-decoration: none;
     color: #111;
 }
-.commentList > p {
+.commentList p {
     padding: 20px 0;
     text-align: center;
 }
@@ -452,7 +452,7 @@ main {
     background: #f9f9f9;
     margin-bottom: 16px;
 }
-.commentForm > h3 {
+.commentForm h3 {
     font-weight: bold;
 }
 .commentForm textarea {

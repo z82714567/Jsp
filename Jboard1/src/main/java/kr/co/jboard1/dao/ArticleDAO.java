@@ -122,7 +122,7 @@ public class ArticleDAO extends DBHelper {
 			conn = getConnection();
 			psmt = conn.prepareStatement(SQL.DELETE_ARTICLE);
 			psmt.setString(1, no);
-			psmt.setString(2, no);
+			psmt.setString(2, no); //부모글 삭제 시 댓글 같이 삭제위해 
 			
 			psmt.executeUpdate();
 			 
@@ -180,7 +180,7 @@ public class ArticleDAO extends DBHelper {
 	public void updateArticleForCommentPlus(String no) {
 		try {
 			conn = getConnection();
-			conn.prepareStatement(SQL.UPDATE_ARTICLE_FOR_COMMENT_PLUS);
+			psmt = conn.prepareStatement(SQL.UPDATE_ARTICLE_FOR_COMMENT_PLUS);
 			psmt.setString(1, no);
 			
 			psmt.executeUpdate();
@@ -234,7 +234,7 @@ public class ArticleDAO extends DBHelper {
 	}
 	
 	//추가 5
-	public void updateAticleForCommentMinus(String no) {
+	public void updateArticleForCommentMinus(String no) {
 		try {
 			conn = getConnection();
 			psmt = conn.prepareStatement(SQL.UPDATE_ARTICLE_FOR_COMMENT_MINUS);
@@ -252,9 +252,27 @@ public class ArticleDAO extends DBHelper {
 			conn = getConnection();
 			psmt = conn.prepareStatement(SQL.DELETE_COMMENT);
 			psmt.setString(1, no);
+			
 			psmt.executeUpdate();
+			
 			close();
 		}catch (Exception e) {
+			e.printStackTrace();
+		}
+	}
+	//추가 7
+	public void updateComment(String no, String content) {
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.UPDATE_COMMENT);
+			psmt.setString(1, content);
+			psmt.setString(2, no);
+			
+			psmt.executeUpdate();
+			
+			close(); // 커넥션풀에서 받아오기 위해 
+			
+		}catch(Exception e) {
 			e.printStackTrace();
 		}
 	}

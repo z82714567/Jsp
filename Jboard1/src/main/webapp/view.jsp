@@ -18,6 +18,10 @@
 %>
 <script>// 삭제버튼 눌렸을 때 이벤트 주기
 	$(function(){
+		
+		//댓글 내용 전역변수(댓글수정 취소시 사용)
+		let comment= '';
+		
 		//this = 수정완료버튼
 		//댓글 수정
 		$('.mod').click(function(e){
@@ -34,9 +38,10 @@
 			}else{
 				//수정완료 클릭
 				
+				if(confirm('정말 수정하시겠습니까?')){
 				//수정 데이터 전송(폼->전송) = $(this).closest('form').submit();
 				$(this).parent().parent().submit();
-				
+				}
 				//수정모드 해제
 				$(this).parent().prev().removeClass('modi'); //textarea 닫힘	
 				$(this).parent().prev().attr('readonly', true); //readonly 다시
@@ -44,6 +49,19 @@
 				$(this).prev().hide();
 			}
 		});
+		
+		//댓글 수정 취소(모델1:댓글 수정 취소시 view로 이동만)
+		/*
+		$('.can').click(function(e){
+			e.preventDefault();
+			
+			$(this).parent().prev().removeClass('modi'); //textarea 닫힘	
+			$(this).parent().prev().attr('readonly', true); //readonly 다시
+			$(this).hide();
+			$(this).next().text('수정');
+			
+		});
+		*/
 		
 		//댓글 삭제
 		$('.del').click(function(){
@@ -117,7 +135,10 @@
                     
                     <% for(ArticleDTO comment : comments) { %>
                     <article class="comment">
+                    
                     	<form action="/Jboard1/proc/commentUpdate.jsp" method="post">
+                    		<input type="hidden" name="no" value="<%= comment.getNo() %>"> <%--commentupdate에 넘기기 --%>
+                    		<input type="hidden" name="parent" value="<%= comment.getParent() %>"> <%--commentupdate에 넘기기 --%>
                         <span>
                             <span><%= comment.getNick() %></span>
                             <span><%= comment.getRdate() %></span>
@@ -127,12 +148,13 @@
                         <% if(sessUser.getUid().equals(comment.getWriter())){ %>
                         <div>
                             <a href="/Jboard1/proc/commentDelete.jsp?no=<%= comment.getNo() %>&parent=<%= comment.getParent() %>" class="del">삭제</a> 
-                            <a href="#" class="can">취소</a> <%--전송버튼 --%>
+                            <a href="/Jboard1/view.jsp?no=<%= no %>" class="can">취소</a> <%--전송버튼 --%> 
                             <a href="#" class="mod">수정</a> <%--전송버튼 --%>
                         </div>
                         <% } %>
                         
                         </form>
+                        
                     </article>
                     <% } %>
                     

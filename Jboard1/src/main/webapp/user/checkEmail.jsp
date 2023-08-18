@@ -16,7 +16,6 @@
 	int result = UserDAO.getInstance().selectCountEmail(email);
 	
 	
-	
 	// Json 생성
 	JsonObject json = new JsonObject();
 	json.addProperty("result", result);

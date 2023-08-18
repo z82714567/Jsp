@@ -50,8 +50,7 @@ public class SQL {
 												+ "`writer`=?, "
 												+ "`regip`=?, "
 												+ "`rdate`=NOW()";
-	public static final String UPDATE_ARTICLE_FOR_COMMENT = "UPDATE `Article` SET `comment` = `comment` + 1 WHERE `no`=?";
-		
+	
 	public static final String SELECT_COMMENTS = "SELECT " 
 													+ "a.*, "
 													+ "b.`nick` "
@@ -68,4 +67,5 @@ public class SQL {
 
 	public static final String DELETE_ARTICLE = "DELETE FROM `Article` WHERE `no`=? OR `parent`=?"; //부모글 삭제 시 댓글 같이 삭제
 	
+	public static final String UPDATE_COMMENT = "UPDATE `Article` SET `content`=? WHERE `no`=?";
 }
