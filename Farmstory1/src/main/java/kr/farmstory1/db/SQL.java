@@ -72,4 +72,18 @@ public class SQL {
 	//index 최신글(cate마다) 조회 
 	public static final String SELECT_LATESTS= "SELECT `no`, `title`, `rdate` FROM `Article` WHERE `parent`=0 AND `cate`=? ORDER BY `no` DESC LIMIT ?";
 	
+	//admin - product 상품등록
+	public static final String INSERT_PRODUCT = "INSERT INTO `Product` SET "
+												+ "`type`=?, "
+												+ "`pName`=?, "
+												+ "`price`=?, "
+												+ "`delivery`=?, "
+												+ "`stock`=?, "
+												+ "`thumb1`=?, "
+												+ "`thumb2`=?, "
+												+ "`thumb3`=?, "
+												+ "`seller`=?, "
+												+ "`etc`=?, "
+												+ "`rdate`=NOW() ";
+	
 	}
