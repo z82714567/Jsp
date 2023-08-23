@@ -118,21 +118,21 @@
                         <div id="tabs-1">
                             <ul class="txt">
                             	<% for(ArticleDTO latest : tabLatest1){ %>
-                                <li><a href="/Farmstory1/board/view.jsp?group=Community&cate=notice&no=<%= latest.getNo() %>">· <%= latest.getContent() %></a></li>
+                                <li><a href="/Farmstory1/board/view.jsp?group=Community&cate=notice&no=<%= latest.getNo() %>">· <%= latest.getTitle() %></a></li>
                                 <% } %>
                             </ul>
                         </div>
                         <div id="tabs-2">
                             <ul class="txt">
                                 <% for(ArticleDTO latest : tabLatest2){ %>
-                                <li><a href="/Farmstory1/board/view.jsp?group=Community&cate=qna&no=<%= latest.getNo() %>">· <%= latest.getContent() %></a></li>
+                                <li><a href="/Farmstory1/board/view.jsp?group=Community&cate=qna&no=<%= latest.getNo() %>">· <%= latest.getTitle() %></a></li>
                                 <% } %>
                             </ul>
                         </div>
                         <div id="tabs-3">
                             <ul class="txt">
                                 <% for(ArticleDTO latest : tabLatest3){ %>
-                                <li><a href="/Farmstory1/board/view.jsp?group=Community&cate=faq&no=<%= latest.getNo() %>">· <%= latest.getContent() %></a></li>
+                                <li><a href="/Farmstory1/board/view.jsp?group=Community&cate=faq&no=<%= latest.getNo() %>">· <%= latest.getTitle() %></a></li>
                                 <% } %>
                             </ul>
                         </div>

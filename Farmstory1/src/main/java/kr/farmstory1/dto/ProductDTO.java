@@ -1,6 +1,7 @@
 package kr.farmstory1.dto;
 
 import java.io.File;
+import java.text.DecimalFormat;
 import java.util.UUID;
 
 public class ProductDTO {
@@ -18,6 +19,11 @@ public class ProductDTO {
 	private String seller;
 	private String etc;
 	private String rdate;
+	
+	public ProductDTO() {
+		
+	}
+	
 	//추가
 	private String path;
 	public ProductDTO(String path) {
@@ -50,6 +56,11 @@ public class ProductDTO {
 	public int getPrice() {
 		return price;
 	}
+	//추가
+	public String getPriceWithComma() {
+		DecimalFormat df = new DecimalFormat("###,###");
+		return df.format(price);
+	}
 	public void setPrice(int price) {
 		this.price = price;
 	}
@@ -59,6 +70,11 @@ public class ProductDTO {
 	}
 	public int getDelivery() {
 		return delivery;
+	}
+	//추가
+	public String getDeliveryWithComma() {
+		DecimalFormat df = new DecimalFormat("###,###");
+		return df.format(delivery);
 	}
 	public void setDelivery(int delivery) {
 		this.delivery = delivery;
@@ -86,20 +102,32 @@ public class ProductDTO {
 	public String getThumb1() {
 		return thumb1;
 	}
-	//thumb1,2,3 setter변경
+	
 	public void setThumb1(String thumb1) {
+		this.thumb1 = thumb1;
+	}
+	//thumb1,2,3 setter변경
+	public void setThumb1ForRename(String thumb1) {
 		this.thumb1 = fileRename(thumb1);
 	}
 	public String getThumb2() {
 		return thumb2;
 	}
 	public void setThumb2(String thumb2) {
+		this.thumb2 = thumb2;
+	}
+	//thumb1,2,3 setter변경
+	public void setThumb2ForRename(String thumb2) {
 		this.thumb2 = fileRename(thumb2);
 	}
 	public String getThumb3() {
 		return thumb3;
 	}
 	public void setThumb3(String thumb3) {
+		this.thumb3 =thumb3;
+	}
+	//thumb1,2,3 setter변경
+	public void setThumb3ForRename(String thumb3) {
 		this.thumb3 = fileRename(thumb3);
 	}
 	public String getSeller() {
@@ -114,8 +142,9 @@ public class ProductDTO {
 	public void setEtc(String etc) {
 		this.etc = etc;
 	}
+	//변경
 	public String getRdate() {
-		return rdate;
+		return rdate.substring(0, 10);
 	}
 	public void setRdate(String rdate) {
 		this.rdate = rdate;
@@ -123,17 +152,17 @@ public class ProductDTO {
 	
 	//추가 - 파일명 수정(oName -> sName)
 	public String fileRename(String thumb) {
-		int i = thumb.lastIndexOf(".");
-		String ext = thumb.substring(i);
-		
-		String uuid = UUID.randomUUID().toString();
-		String sName = uuid + ext;
-		
-		File f1 = new File(path+ "/" + thumb);
-		File f2 = new File(path+ "/" + sName);
-		f1.renameTo(f2);
-		
-		return sName;
+	int i = thumb.lastIndexOf(".");
+	String ext = thumb.substring(i);
+	
+	String uuid = UUID.randomUUID().toString();
+	String sName = uuid + ext;
+	
+	File f1 = new File(path+ "/" + thumb);
+	File f2 = new File(path+ "/" + sName);
+	f1.renameTo(f2);
+	
+	return sName;
 	}
 	
 	

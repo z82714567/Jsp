@@ -85,5 +85,30 @@ public class SQL {
 												+ "`seller`=?, "
 												+ "`etc`=?, "
 												+ "`rdate`=NOW() ";
+	//market list - product 전체상품 조회(10개씩)
+	public static final String SELECT_PRODUCTS_ALL = "SELECT * FROM `Product` WHERE `stock` > 0 LIMIT ?, 10";
+	//market list - 유형별 상품 조회(10개씩)
+	public static final String SELECT_PRODUCTS_TYPE = "SELECT * FROM `Product` WHERE `stock` > 0 AND `type`=? LIMIT ?, 10";
+	//market list - 전체상품 갯수 조회
+	public static final String SELECT_COUNT_PRODUCTS_ALL = "SELECT COUNT(*) FROM `Product` WHERE `stock` > 0";
+	//market list - 전체상품 갯수 조회(유형별로)
+	public static final String SELECT_COUNT_PRODUCTS_TYPE = "SELECT COUNT(*) FROM `Product` WHERE `stock` > 0 AND `type`=?";
+	//market view - 상품번호로 상품 조회
+	public static final String SELECT_PRODUCT = "SELECT * FROM `Product` WHERE `pNo`=?";
 	
+	//market order
+	public static final String INSERT_ORDER = "INSERT INTO `Order` SET "
+											+ "`orderProduct`=?, "
+											+ "`orderCount`=?, "
+											+ "`orderDelivery`=?, "
+											+ "`orderPrice`=?, "
+											+ "`orderTotal`=?, "
+											+ "`receiver`=?, "
+											+ "`hp`=?, "
+											+ "`zip`=?, "
+											+ "`addr1`=?, "
+											+ "`addr2`=?, "
+											+ "`orderEtc`=?, "
+											+ "`orderUser`=?, "
+											+ "`orderDate`=NOW()";
 	}
