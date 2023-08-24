@@ -2,6 +2,7 @@
 <%@page import="kr.farmstory1.dao.ProductDAO"%>
 <%@page import="kr.farmstory1.dto.ProductDTO"%>
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ include file="./_header.jsp" %>
 <%
 	request.setCharacterEncoding("UTF-8");
 	String pg = request.getParameter("pg");
@@ -47,7 +48,7 @@
 	List<ProductDTO> products = dao.selectProducts(start);
 
 %>
-<%@ include file="./_header.jsp" %>
+
         <main>
             <%@ include file="./_aside.jsp" %>
             <section id="productList">
@@ -101,7 +102,7 @@
                     <% } %>
                     
                     <% for(int i=pageGroupStart; i<=pageGroupEnd; i++){ %>
-                    <a href="./productList.jsp?pg=<%= i %>" class="num <%= (currentPage == i)?"current":"" %>"><%= i %></a>
+                    <a href="./productList.jsp?pg=<%= i %>" class="num <%= (currentPage == i)?"on":"" %>">[<%= i %>]</a>
                     <% } %>  
                                        
                     <% if(pageGroupEnd < lastPageNum) { %>  

@@ -111,4 +111,19 @@ public class SQL {
 											+ "`orderEtc`=?, "
 											+ "`orderUser`=?, "
 											+ "`orderDate`=NOW()";
+	//admin orderList - 전체주문상품 갯수 조회
+	public static final String SELECT_COUNT_ORDERS_ALL = "SELECT COUNT(*) FROM `Order` WHERE `orderCount` > 0";
+	
+	//admin orderList - 전체주문상품 조회(10개씩)(Product의 상품명, 상세확인사진 포함)
+	public static final String SELECT_ORDERS_ALL = "SELECT "
+													+ "a.*, "
+													+ "b.`pName`, "
+													+ "b.`thumb1` "
+													+ "FROM `Order` AS a "
+													+ "JOIN `Product` AS b "
+													+ "ON a.`orderProduct` = b.`pNo` "
+													+ "LIMIT ?, 10";		
+	//admin orderList - 선택삭제
+	public static final String DELETE_ORDER = "DELETE FROM `Order` WHERE `orderNo`=?";
+	
 	}
