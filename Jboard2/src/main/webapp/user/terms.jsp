@@ -1,19 +1,21 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./_header.jsp" %>
 <script>
+	
+
     	window.onload = function(){
     		
-    		const terms = document.getElementsByClassName('terms')[0];
-    		const privacy = document.getElementsByClassName('privacy')[0];
+    		const chk1 = document.getElementsByName('chk1')[0];
+    		const chk2 = document.getElementsByName('chk2')[0];
     		
-    		const btnNext = document.querySelector('.btn btnNext');
+    		const btnNext = document.querySelector('.btnNext'); //class: btn, btnNext 2개라는 뜻임
     		btnNext.addEventListener('click', function(e){
     			e.preventDefault();
     			
-    			if(!terms.checked){
+    			if(!chk1.checked){
     				alert('이용약관에 동의하셔야 합니다.');
     				return;
-    			}else if(!privacy.checked){
+    			}else if(!chk2.checked){
     				alert('개인정보 취급방침에 동의하셔야 합니다.');
     				return;
     			}else{
@@ -30,7 +32,7 @@
                     <tr>
                         <td>
                             <textarea name="terms">${requestScope.dto.getTerms()}</textarea>
-                            <label><input type="checkbox" class="terms">&nbsp;동의합니다.</label>
+                            <label><input type="checkbox" class="terms" name="chk1">&nbsp;동의합니다.</label>
                         </td>
                     </tr>
                 </table>
@@ -40,14 +42,14 @@
                     <tr>
                         <td>
                             <textarea name="privacy">${dto.privacy}</textarea>
-                            <label><input type="checkbox" class="privacy">&nbsp;동의합니다.</label>
+                            <label><input type="checkbox" class="privacy" name="chk2">&nbsp;동의합니다.</label>
                         </td>
                     </tr>
                 </table>
                 
                 <div>
                     <a href="/Jboard2/user/login.do" class="btn btnCancel">취소</a>
-                    <a href="/Jboard2/user/register.do" class="btn btnNext">다음</a>
+                    <a href="#" class="btn btnNext">다음</a>
                 </div>
 
             </section>

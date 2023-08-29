@@ -28,6 +28,7 @@ public class UserService {
 	
 	private UserDAO dao = UserDAO.getInstance();
 	
+	//회원가입
 	public void insertUser(UserDTO dto) {
 		dao.insertUser(dto);
 	}
@@ -42,10 +43,21 @@ public class UserService {
 	public int selectCountHp(String hp) {
 		return dao.selectCountHp(hp);
 	}
+	public int selectCountEmail(String email) {
+		return dao.selectCountEmail(email);
+	}
+	//아이디 찾기
+	public int selectCountNameAndEmail(String name, String email) {
+		return dao.selectCountNameAndEmail(name,email);
+	}
 	
-	
-	public UserDTO selectUser(String uid) {
-		return dao.selectUser(uid);
+	//로그인
+	public UserDTO selectUser(String uid, String pass) {
+		return dao.selectUser(uid, pass);
+	}
+	//아이디 찾기 전송
+	public UserDTO selectUserByNameAndEmail(String name, String email) {
+		return dao.selectUserByNameAndEmail(name, email);
 	}
 
 	public List<UserDTO> selectUsers() {
