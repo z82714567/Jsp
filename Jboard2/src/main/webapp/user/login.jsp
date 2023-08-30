@@ -9,6 +9,8 @@
 		alert('정상적으로 로그아웃 되었습니다.');
 	}else if(success == 101){
 		alert('로그인하십시오.');
+	}else if(success == 300){
+		alert('비밀번호 변경 완료. 다시 로그인 하시기 바랍니다.');
 	}
 </script>
         <main id="user">

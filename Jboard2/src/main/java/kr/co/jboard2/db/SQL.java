@@ -16,13 +16,37 @@ public class SQL {
 											+ "`regip`=?,"
 											+ "`regDate`=NOW()";
 	public static final String SELECT_USER = "SELECT * FROM `User` WHERE `uid`=? AND `pass`=SHA2(?, 256)";
-	public static final String SELECT_USER_BY_NAME_EMAIL = "SELECT * FROM `User` WHERE `name`=? AND `email`=?";
+	public static final String SELECT_USER_BY_NAME_EMAIL = "SELECT * FROM `User` WHERE `name`=? AND `email`=?"; //아이디 찾기 전송
 	public static final String SELECT_COUNT_UID = "SELECT COUNT(*) FROM `User` WHERE `uid`=?";
 	public static final String SELECT_COUNT_NICK = "SELECT COUNT(*) FROM `User` WHERE `nick`=?";
 	public static final String SELECT_COUNT_EMAIL = "SELECT COUNT(*) FROM `User` WHERE `email`=?";
 	public static final String SELECT_COUNT_NAME_EMAIL = "SELECT COUNT(*) FROM `User` WHERE `name`=? AND `email`=?"; //아이디 찾기
+	public static final String SELECT_COUNT_UID_EMAIL = "SELECT COUNT(*) FROM `User` WHERE `uid`=? AND `email`=?"; //비밀번호 찾기
 	public static final String SELECT_COUNT_HP = "SELECT COUNT(*) FROM `User` WHERE `hp`=?";
 	public static final String SELECT_TERMS = "SELECT * FROM `Terms`";
+	public static final String UPDATE_USER_PASS = "UPDATE `User` SET `pass`=SHA2(?, 256) WHERE `uid`=?"; //비밀번호찾기 비밀번호 변경
+	public static final String UPDATE_USER_FOR_WITHDRAW = "UPDATE `User` SET"
+														+ "`pass`=null,"
+														+ "`name`=null,"
+														+ "`nick`=null,"
+														+ "`email`=null,"
+														+ "`hp`=null,"
+														+ "`role`=null,"
+														+ "`zip`=null,"
+														+ "`addr1`=null,"
+														+ "`addr2`=null,"
+														+ "`leaveDate`=NOW() "
+														+ " WHERE `uid`=?"; //회원정보수정 비밀번호 변경
+	public static final String UPDATE_USER = "UPDATE `User` SET"
+											+ "`name`=?,"
+											+ "`nick`=?,"
+											+ "`email`=?,"
+											+ "`hp`=?,"
+											+ "`zip`=?,"
+											+ "`addr1`=?,"
+											+ "`addr2`=? "
+											+ " WHERE `uid`=?"; //회원정보수정
+	
 	
 	
 	//article

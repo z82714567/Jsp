@@ -19,7 +19,7 @@
                         </tr>
                         <tr>
                             <td>가입일</td>
-                            <td>${user.regdate}</td>
+                            <td>${user.regDate}</td>
                         </tr>
                     </table>                                        
                 </form>
@@ -29,8 +29,8 @@
                 </p>
 
                 <div>
-                    <a href="./login.jsp" class="btn btnCancel">로그인</a>
-                    <a href="./register.jsp" class="btn btnNext">비밀번호 찾기</a>
+                    <a href="/Jboard2/user/login.do" class="btn btnCancel">로그인</a>
+                    <a href="/Jboard2/user/findPass.do" class="btn btnNext">비밀번호 찾기</a>
                 </div>
             </section>
         </main>

@@ -151,7 +151,29 @@ public class UserDAO  extends DBHelper{
 			
 			close();
 		}catch(Exception e) {
-			logger.error("selectCountEmail() error : " + e.getMessage());
+			logger.error("selectCountNameAndEmail() error : " + e.getMessage());
+		}
+		return result;
+		
+	}
+	//비밀번호 찾기
+	public int selectCountUidAndEmail(String uid,String email) {
+		
+		int result = 0;
+		
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.SELECT_COUNT_UID_EMAIL);
+			psmt.setString(1, uid);
+			psmt.setString(2, email);
+			rs = psmt.executeQuery();
+			if(rs.next()) {
+				result = rs.getInt(1);
+			}
+			
+			close();
+		}catch(Exception e) {
+			logger.error("selectCountUidAndEmail() error : " + e.getMessage());
 		}
 		return result;
 		
@@ -192,7 +214,7 @@ public class UserDAO  extends DBHelper{
 		}
 		return dto;
 	}
-	//아이디 찾기 전송
+	//아이디찾기 전송
 	public UserDTO selectUserByNameAndEmail(String name, String email) {
 		
 		UserDTO dto = null; //회원이 아닐경우 uid, pass없으니까 null로 리턴해주려고 따로 선언, 생성
@@ -223,14 +245,70 @@ public class UserDAO  extends DBHelper{
 			close();
 			
 		}catch(Exception e) {
-			logger.error("selectUser() error : " + e.getMessage());
+			logger.error("selectUserByNameAndEmail() error : " + e.getMessage());
 		}
 		return dto;
 	}
 	public List<UserDTO> selectUsers() {
 		return null;
 	}
-	public void updateUser(UserDTO dto) {}
+	//비밀번호 찾기 변경, 회원정보수정 비밀번호 변경
+	public int updateUserPass(String uid, String pass) {
+		int result = 0;
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.UPDATE_USER_PASS);
+			psmt.setString(1, pass);
+			psmt.setString(2, uid);
+			result = psmt.executeUpdate();
+			
+			close();
+			
+		}catch(Exception e) {
+			logger.error("updateUserPass() error : " + e.getMessage());
+		}
+		return result;
+	}
+	//회원탈퇴
+	public int updateUserForWithdraw(String uid) {
+		
+		int result = 0;
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.UPDATE_USER_FOR_WITHDRAW);
+			psmt.setString(1, uid);
+			result = psmt.executeUpdate();
+			
+			close();
+			
+		}catch(Exception e) {
+			logger.error("updateUserForWithdraw() error : " + e.getMessage());
+		}
+		return result;
+	}
+	
+	//회원정보수정
+	public void updateUser(UserDTO dto) {
+		try {
+			conn = getConnection();
+			psmt = conn.prepareStatement(SQL.UPDATE_USER);
+			psmt.setString(1, dto.getName());
+			psmt.setString(2, dto.getNick());
+			psmt.setString(3, dto.getEmail());
+			psmt.setString(4, dto.getHp());
+			psmt.setString(5, dto.getZip());
+			psmt.setString(6, dto.getAddr1());
+			psmt.setString(7, dto.getAddr2());
+			psmt.setString(8, dto.getUid());
+			psmt.executeUpdate();
+			
+			close();
+			
+		}catch(Exception e) {
+			logger.error("updateUser() error : " + e.getMessage());
+		}
+	}
+	
 	public void deleteUser(String uid) {}
 	
 	

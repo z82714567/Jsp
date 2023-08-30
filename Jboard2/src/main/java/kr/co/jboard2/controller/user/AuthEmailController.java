@@ -26,22 +26,40 @@ public class AuthEmailController extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+		String type = req.getParameter("type"); //이메일 인증 - 회원가입, 아이디 찾기, 비밀번호 찾기 구분짓기 위해서
+		String uid = req.getParameter("uid"); //비밀번호 찾기
 		String name = req.getParameter("name"); //아이디 찾기
 		String email = req.getParameter("email");
 
 		int result = 0;
 		int status = 0;
 		
-		if(name == null) {
+		if(type.equals("REGISTER")) {
 			//회원가입 할 때 이메일 인증
 			result = service.selectCountEmail(email);//이메일 중복체크
-			status  = service.sendCodeByEmail(email);//이메일 발송 함수 호출
-		}else {
-			//아이디찾기 할 때 이메일 인증
-			result = service.selectCountNameAndEmail(name, email);
-			
-			if(result == 1) {
+			if(result == 0) { //가입된 이메일로 인증할 수 없음
 				status  = service.sendCodeByEmail(email);//이메일 발송 함수 호출
+			}
+		}else if(type.equals("FIND_ID")){
+			//아이디 찾기 할 때 이메일 인증
+			result = service.selectCountNameAndEmail(name, email);
+			if(result == 1) { //가입된 이메일로 인증
+				status  = service.sendCodeByEmail(email);//이메일 발송 함수 호출
+			}
+		}else if(type.equals("FIND_PASS")){
+			//비밀번호 찾기 할 때 이메일 인증
+			result = service.selectCountUidAndEmail(uid, email);
+			
+			if(result == 1) { //가입된 이메일로 인증
+				status  = service.sendCodeByEmail(email);//이메일 발송 함수 호출
+			}
+		}else if(type.equals("MODIFY")){
+			//회원정보 수정 할 때 이메일 인증
+			result = service.selectCountEmail(email);//이메일 중복체크
+			if(result == 0) { //가입된 이메일로 인증할 수 없음
+			//회원정보 수정(이메일)할 때 이메일 인증
+				status  = service.sendCodeByEmail(email);//이메일 발송 함수 호출
+				
 			}
 		}
 		

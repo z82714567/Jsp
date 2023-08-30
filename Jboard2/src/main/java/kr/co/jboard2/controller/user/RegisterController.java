@@ -25,6 +25,7 @@ public class RegisterController extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
+		
 	
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/user/register.jsp");
 		dispatcher.forward(req, resp);
@@ -61,7 +62,7 @@ public class RegisterController extends HttpServlet{
 		
 		service.insertUser(dto);
 		
-		resp.sendRedirect("/Jboard2/user/login.do?success=200");
+		resp.sendRedirect("/Jboard2/user/login.do");
 		
 	
 	}

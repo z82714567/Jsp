@@ -9,6 +9,7 @@
             <section class="register">
 
                 <form id="formUser" action="/Jboard2/user/register.do" method="post">
+                	<input type="hidden" name="type" value="REGISTER"/> <!-- 이메일 인증 - 회원가입, 아이디 찾기, 비밀번호 찾기 구분짓기 위해서 -->
                     <table border="1">
                         <caption>사이트 이용정보 입력</caption>
                         <tr>

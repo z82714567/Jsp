@@ -3,11 +3,14 @@
  * 회원가입 중복체크
  * 
  */
-window.onload = function(){
+$(function(){
 		//아이디 중복체크
 		const inputUid = document.getElementsByName('uid')[0];
 		const uidResult = document.getElementsByClassName('uidResult')[0];
 		const btnCheckUid = document.getElementById('btnCheckUid');
+		
+		if(btnCheckUid != null){
+
 		btnCheckUid.onclick = function(){
 			
 			const uid = inputUid.value;
@@ -46,7 +49,7 @@ window.onload = function(){
 				}//readyState end
 			}//onreadystatechange end
 		}//btnCheckUid onclick end
-		
+		}
 		//닉네임 중복체크
 		$('#btnCheckNick').click(function(){
 			
@@ -107,4 +110,4 @@ window.onload = function(){
 				
 			});
 		});//resultHp end
-	}//onload end
+	});//제이쿼리 문서 레디함수 end

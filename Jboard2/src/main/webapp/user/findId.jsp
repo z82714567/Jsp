@@ -1,9 +1,11 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./_header.jsp" %>
+<script src="/Jboard2/js/validation.js"></script>
 <script src="/Jboard2/js/authEmail.js"></script>
 <script>
+	//다음(a태그)누를 때 form전송으로 사용
 	$(function(){
-		$('.btnNext').click(function(){
+		$('.btnNext').click(function(e){
 			e.preventDefault();
 			
 			if(isEmailOk){
@@ -17,7 +19,8 @@
 </script>
         <main id="user">
             <section class="find findId">
-                <form id="formFindId" action="/Jboard2/user/findIdResult.do" method="get">
+                <form id="formFindId" action="/Jboard2/user/findIdResult.do" method="POST">
+                <input type="hidden" name="type" value="FIND_ID"/> <!-- 이메일 인증 - 회원가입, 아이디 찾기, 비밀번호 찾기 구분짓기 위해서 -->
                     <table border="0">
                         <caption>아이디 찾기</caption>
                         <tr>
