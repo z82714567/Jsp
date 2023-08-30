@@ -8,26 +8,26 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import dto.User1DTO;
+import dto.User2DTO;
+import dto.User3DTO;
+import dto.User4DTO;
 
-public class User1DAO {
-
+public class User4DAO {
+	
 	private final String HOST = "jdbc:mysql://13.124.4.134:3306/userdb";
 	private final String USER = "user1";
 	private final String PASS = "zx12cv34!!ZX";
-	
-	
-	public void insertUser1(User1DTO dto) {
-		
-		
+
+	//등록
+	public void insertUser4(User4DTO dto) {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection conn = DriverManager.getConnection(HOST, USER, PASS);
-			PreparedStatement psmt = conn.prepareStatement("INSERT INTO `user1` VALUES (?,?,?,?)");
-			psmt.setString(1, dto.getUid());
-			psmt.setString(2, dto.getName());
-			psmt.setString(3, dto.getHp());
-			psmt.setInt(4, dto.getAge());
+			PreparedStatement psmt = conn.prepareStatement("INSERT INTO `user4` VALUES (?,?,?,?)");
+			psmt.setString(1, dto.getName());
+			psmt.setInt(2, dto.getGender());
+			psmt.setInt(3, dto.getAge());
+			psmt.setString(4, dto.getAddr());
 			psmt.executeUpdate();
 			
 			psmt.close();
@@ -36,53 +36,58 @@ public class User1DAO {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		
 	}
-	
-	public User1DTO selectUser1(String uid) {
-		
-		User1DTO dto = new User1DTO();
+	//수정데이터목록
+	public User4DTO selectUser4(int seq) {
+		User4DTO dto = new User4DTO();
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection conn = DriverManager.getConnection(HOST, USER, PASS);
-			PreparedStatement psmt = conn.prepareStatement("SELECT * FROM `user1` WHERE `uid`=?");
-			psmt.setString(1, uid);
-			
-			ResultSet rs = psmt.executeQuery();
+			PreparedStatement psmt = conn.prepareStatement("SELECT * FROM `user4` WHERE `seq`=?");
+			psmt.setInt(1, seq);
+			ResultSet rs =  psmt.executeQuery();
 			
 			if(rs.next()) {
-				dto.setUid(rs.getString(1));
+				dto.setSeq(rs.getInt(1));
 				dto.setName(rs.getString(2));
-				dto.setHp(rs.getString(3));
+				dto.setGender(rs.getInt(3));
 				dto.setAge(rs.getInt(4));
+				dto.setAddr(rs.getString(5));
+				
 			}
+				
+			
 			rs.close();
-			conn.close();
 			psmt.close();
+			conn.close();
 			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
+		
 		return dto;
 	}
-	
-	public List<User1DTO> selectUser1s() {
-		List<User1DTO> users = new ArrayList<>();
+	//목록
+	public List<User4DTO> selectUser4s() {
+		List<User4DTO> users4 = new ArrayList<>();
+		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection conn = DriverManager.getConnection(HOST, USER, PASS);
 			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery("SELECT * FROM `user1`");
+			ResultSet rs = stmt.executeQuery("SELECT * FROM `user4`");
 			
 			while(rs.next()) {
-				User1DTO dto = new User1DTO();
-				dto.setUid(rs.getString(1));
+				User4DTO dto = new User4DTO();
+				dto.setSeq(rs.getInt(1));
 				dto.setName(rs.getString(2));
-				dto.setHp(rs.getString(3));
+				dto.setGender(rs.getInt(3));
 				dto.setAge(rs.getInt(4));
-				users.add(dto);
+				dto.setAddr(rs.getString(5));
+				users4.add(dto);
 			}
+			
 			rs.close();
 			conn.close();
 			stmt.close();
@@ -91,47 +96,41 @@ public class User1DAO {
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		
-		
-		
-		return users;
+		return users4;
 	}
-	public void updateUser1(User1DTO dto) {
-		
+	//수정
+	public void updateUser4(User4DTO dto) {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection conn = DriverManager.getConnection(HOST, USER, PASS);
-			PreparedStatement psmt = conn.prepareStatement("UPDATE `user1` SET `name`=?, `hp`=?, `age`=? WHERE `uid`=?");
+			PreparedStatement psmt = conn.prepareStatement("UPDATE `user4` SET `name`=?, `gender`=?, `age`=?, `addr`=? WHERE `seq`=?");
 			psmt.setString(1, dto.getName());
-			psmt.setString(2, dto.getHp());
+			psmt.setInt(2, dto.getGender());
 			psmt.setInt(3, dto.getAge());
-			psmt.setString(4, dto.getUid());
-			
+			psmt.setString(4, dto.getAddr());
+			psmt.setInt(5, dto.getSeq());
 			psmt.executeUpdate();
 			
-			psmt.close();
 			conn.close();
+			psmt.close();
 			
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
-
 	}
-	public void deleteUser1(String uid) {
-		
+	//삭제
+	public void deleteUser4(int seq) {
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection conn = DriverManager.getConnection(HOST, USER, PASS);
-			PreparedStatement psmt = conn.prepareStatement("DELETE FROM `user1` WHERE `uid`=?");
-			psmt.setString(1, uid);
+			PreparedStatement psmt = conn.prepareStatement("DELETE FROM `user4` WHERE `seq`=?");
+			psmt.setInt(1, seq);
 			psmt.executeUpdate();
 			
-			psmt.close();
 			conn.close();
-			
+			psmt.close();
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
 	}
-	
 }
