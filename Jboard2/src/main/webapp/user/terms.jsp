@@ -1,8 +1,6 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ include file="./_header.jsp" %>
 <script>
-	
-
     	window.onload = function(){
     		
     		const chk1 = document.getElementsByName('chk1')[0];
@@ -22,7 +20,6 @@
     				location.href = '/Jboard2/user/register.do';
     			}
     		});
-    		
     	}
     </script>
         <main id="user">
