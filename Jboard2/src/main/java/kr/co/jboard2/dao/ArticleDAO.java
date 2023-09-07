@@ -49,7 +49,7 @@ public class ArticleDAO extends DBHelper {
 		}
 		return no;
 	}
-	//view , modify, list Hit증가(select하면서 바로 hit update)
+	//view , modify, list 조회+ Hit증가(select하면서 바로 hit update)
 	public ArticleDTO selectArticle(String no) {
 		ArticleDTO article = null;
 		

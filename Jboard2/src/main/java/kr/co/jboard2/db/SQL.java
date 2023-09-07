@@ -78,7 +78,7 @@ public class SQL {
 	public static final String SELECT_COUNT_TOTAL = "SELECT COUNT(*) FROM `Article` WHERE `parent`=0"; //부모글 갯수만 카운트
 	public static final String SELECT_COUNT_TOTAL_FOR_SEARCH = "SELECT COUNT(*) FROM `Article` WHERE `parent`=0 AND `title` LIKE ?"; //제목키워드 조회한 갯수 카운트
 	
-	public static final String SELECT_MAX_NO = "SELECT MAX(`no`) FROM `Article`"; //
+	public static final String SELECT_MAX_NO = "SELECT MAX(`no`) FROM `Article`"; //제일 최신글 조회
 	
 	public static final String SELECT_ARTICLE = "SELECT * FROM `Article` AS a LEFT JOIN `File` AS b ON a.`no` = b.`ano` WHERE `no`=?"; //파일첨부 없을 경우도 조회가능(외부조인LEFT)
 	

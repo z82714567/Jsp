@@ -49,6 +49,7 @@ public class WriteController extends HttpServlet{
 	}
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		//파일 업로드
 		MultipartRequest mr = aService.uploadFile(req);
 		
 		//폼 데이터 수신(이후 logger.debug처리 꼭 해주기)

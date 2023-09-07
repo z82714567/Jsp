@@ -144,8 +144,8 @@
 				                
 				                <c:if test="${sessUser.uid eq comment.writer}"> <!--내가쓴댓글만 수정삭제  -->                     
 				                <div>
-				                    <a href="#" class="remove" data-no=${comment.no}>삭제</a>
-				                    <input type="hidden" name="commentParent" value=${comment.parent}/>
+				                    <a href="#" class="remove" data-no="${comment.no}">삭제</a>
+				                    <input type="hidden" name="commentParent" value="${comment.parent}"/>
 				                    <a href="#" class="modify">수정</a>
 				                </div>
 				                </c:if>  

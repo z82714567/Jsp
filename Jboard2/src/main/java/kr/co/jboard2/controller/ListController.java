@@ -42,22 +42,22 @@ public class ListController extends HttpServlet{
 		//현재 페이지 번호
 		int currentPage = service.getCurrentPage(pg);
 		
-		// 전체 게시물 갯수 + 검색한 게시물 갯수
+		//전체 게시물 갯수 + 검색한 게시물 갯수
 		int total = service.selectCountTotal(search);
 		
-		// 마지막 페이지 번호
+		//마지막 페이지 번호
 		int lastPageNum = service.getLastPageNum(total);
 		
-		// 페이지 그룹 start, end 번호
+		//페이지 그룹 start, end 번호
 		int[] result = service.getPageGroupNum(currentPage, lastPageNum);
 		
-		// 페이지 시작번호
+		//페이지 시작번호
 		int pageStartNum = service.getPageStartNum(total, currentPage);
 		
-		// 시작 인덱스
+		//시작 인덱스
 		int start = service.getStartNum(currentPage);
 		
-		// 글 조회 + 검색한 글 조회
+		//글 조회 + 검색한 글 조회
 		List<ArticleDTO> articles = service.selectArticles(start, search);
 		
 		
