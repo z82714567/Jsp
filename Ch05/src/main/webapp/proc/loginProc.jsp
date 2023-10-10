@@ -9,7 +9,7 @@
 	String auto= request.getParameter("auto");
 	
 	//회원 여부 확인
-	if(pw.equals( "1234")) {
+	if(pw.equals("1234")) {
 		//회원일 경우 -> 세션에 기록함
 		
 		//자동로그인 처리(체크박스 체크했을 때)

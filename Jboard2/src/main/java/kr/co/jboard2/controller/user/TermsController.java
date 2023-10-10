@@ -24,6 +24,11 @@ public class TermsController extends HttpServlet{
 		TermsDTO dto = service.selectTerms();
 		req.setAttribute("dto", dto); 
 		
+		
+		
+		
+		
+		
 		RequestDispatcher dispatcher = req.getRequestDispatcher("/user/terms.jsp");
 		dispatcher.forward(req, resp);
 		

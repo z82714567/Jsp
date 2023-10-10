@@ -6,7 +6,6 @@
 }
 ul, ol {list-style: none;}
 a {text-decoration: none; color: #111;}
-input, textarea {outline:none;}
 
 #container {
     width: 980px;
@@ -467,12 +466,10 @@ main > .info > div > .account {
     color: #111;
     font-weight: bold;            
 }
-
 #sub > .market > .list > table .thumb {
 	width: 120px;
 	height: 120px;	
 }
-
 
 #sub > .market > .list > .paging {
     margin: 20px 0;
@@ -495,7 +492,7 @@ main > .info > div > .account {
 
 #sub > .market > .view > .basic {
     width: 100%;
-    height: 300px;
+    height: 270px;
     position: relative;
     overflow: hidden;
 }
@@ -527,7 +524,8 @@ main > .info > div > .account {
     bottom: 0;
 }
 
-#sub > .market > .view > .detail > img {width: 760px;}
+
+#sub > .market > .view > .detail {}
 #sub > .market > .view > .delivery {}
 #sub > .market > .view > .exchange table {
     width: 100%;
@@ -574,7 +572,6 @@ input[type=number]::-webkit-outer-spin-button {
 }
 #sub > .market > .order > .info > img {
     float: left;
-	width: 240px;
 }
 #sub > .market > .order > .info > table {
     float: right;
@@ -692,7 +689,6 @@ input[type=number]::-webkit-outer-spin-button {
 #sub > .community .lnb > li:nth-child(3).on > a {background-image: url('../images/sub_cate5_lnb3_ov.png');}
 #sub > .community .lnb > li:nth-child(4).on > a {background-image: url('../images/sub_cate5_lnb4_ov.png');}
 #sub > .community .lnb > li:nth-child(5).on > a {background-image: url('../images/sub_cate5_lnb5_ov.png');}
-
 
 /* user */
 #sub > .user > article {

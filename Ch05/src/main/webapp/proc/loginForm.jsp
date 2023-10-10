@@ -7,6 +7,8 @@
 		if(cookie.getName().equals("cid")) {
 			
 			String id = cookie.getValue();
+			
+			
 			session.setAttribute("sessid", id);
 		}
 	}

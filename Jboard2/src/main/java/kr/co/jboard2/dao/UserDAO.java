@@ -121,7 +121,6 @@ public class UserDAO  extends DBHelper{
 			conn = getConnection();
 			psmt = conn.prepareStatement(SQL.SELECT_COUNT_EMAIL);
 			psmt.setString(1, email);
-			psmt.setString(1, email);
 			rs = psmt.executeQuery();
 			if(rs.next()) {
 				result = rs.getInt(1);
