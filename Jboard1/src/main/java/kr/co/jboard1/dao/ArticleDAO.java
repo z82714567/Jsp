@@ -134,7 +134,7 @@ public class ArticleDAO extends DBHelper {
 		}
 	}
 	
-	//추가(list -전체 게시물 total) 1
+	//추가1(list -전체 게시물 total) 
 	public int selectCountTotal() {
 		
 	int total = 0;

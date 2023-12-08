@@ -46,19 +46,22 @@ public class UserService {
 	public int selectCountEmail(String email) {
 		return dao.selectCountEmail(email);
 	}
-	//아이디 찾기
-	public int selectCountNameAndEmail(String name, String email) {
-		return dao.selectCountNameAndEmail(name,email);
-	}
-	//비밀번호 찾기
-	public int selectCountUidAndEmail(String uid, String email) {
-		return dao.selectCountUidAndEmail(uid,email);
-	}
 	
 	//로그인
 	public UserDTO selectUser(String uid, String pass) {
 		return dao.selectUser(uid, pass);
 	}
+	
+	//아이디 찾기
+	public int selectCountNameAndEmail(String name, String email) {
+		return dao.selectCountNameAndEmail(name,email);
+	}
+	
+	//비밀번호 찾기
+	public int selectCountUidAndEmail(String uid, String email) {
+		return dao.selectCountUidAndEmail(uid,email);
+	}
+	
 	//아이디 찾기 전송
 	public UserDTO selectUserByNameAndEmail(String name, String email) {
 		return dao.selectUserByNameAndEmail(name, email);
@@ -72,10 +75,12 @@ public class UserService {
 	public void updateUser(UserDTO dto) {
 		dao.updateUser(dto);
 	}
+	
 	//비밀번호찾기 비밀번호 변경, 회원정보수정 비밀번호 변경
 	public int updateUserPass(String uid, String pass) {
 		return dao.updateUserPass(uid, pass);
 	}
+	
 	//회원탈되
 	public int updateUserForWithdraw(String uid) {
 		return dao.updateUserForWithdraw(uid);

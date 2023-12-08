@@ -22,7 +22,6 @@
 				<th>입사일</th>
 				<th>관리</th>
 			</tr>
-			<c:forEach></c:forEach>
 			<tr>
 				<td></td>
 				<td></td>

@@ -12,7 +12,7 @@
                         <li class="<%= cate.equals("story") ? "on":"" %>"><a href="/Farmstory1/board/list.jsp?group=Croptalk&cate=story">농작물이야기</a></li>
                         <li class="<%= cate.equals("grow") ? "on":"" %>"><a href="/Farmstory1/board/list.jsp?group=Croptalk&cate=grow">텃밭가꾸기</a></li>
                         <li class="<%= cate.equals("school") ? "on":"" %>"><a href="/Farmstory1/board/list.jsp?group=Croptalk&cate=school">귀농학교</a></li>
-                    </ul>
+                    </ul>    
 
                 </aside>
                 <article>

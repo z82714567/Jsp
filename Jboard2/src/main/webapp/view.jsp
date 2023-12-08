@@ -151,7 +151,7 @@
 				                </c:if>  
 				                
 				            </article>
-								</c:forEach>
+                        </c:forEach>
 								<c:if test="${comments.size() == 0}">
 			            			<p class="empty">등록된 댓글이 없습니다.</p>
 								</c:if>
